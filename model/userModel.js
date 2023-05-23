@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema(
       type: Date,
     },
     avatar: {
-      type: String,
+      type: Number
     },
     username: {
       type: String,
