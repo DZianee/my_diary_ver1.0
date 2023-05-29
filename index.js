@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const log = require("./middleware/logEvent");
-const route = require("./routes/test")
+const route = require("./routes/roleRoute")
 const dbConnection = require("./config/dbConfig")
 
 // definite
@@ -33,4 +33,15 @@ app.listen(port, (err) => {
 });
 dbConnection();
 
+// function test(a, b) {
+//     this.a = a;
+//     this.b = b;
+//     (this.print = () => {
+//         this.a = 3
+//         console.log(this)
+//     })
 
+// }
+
+// const tester = new test(1,2)
+// tester.print()
