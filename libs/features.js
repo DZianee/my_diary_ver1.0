@@ -10,6 +10,7 @@ class appFeatures {
     this.query = this.query.limit(pageSize).skip(skip);
     return this;
   }
+  sorting() {}
 }
 
 module.exports = appFeatures;

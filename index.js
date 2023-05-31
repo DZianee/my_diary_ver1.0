@@ -5,26 +5,25 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
 const log = require("./middleware/logEvent");
-const route = require("./routes/roleRoute")
-const dbConnection = require("./config/dbConfig")
+const roleRoute = require("./routes/roleRoute");
+const userRoute = require("./routes/userRoute");
+const dbConnection = require("./config/dbConfig");
 
 // definite
 const app = express();
-dotenv.config()
+dotenv.config();
 const port = process.env.PORT || 1314;
 
-
 //usage
-app.use(bodyParser.json())
-app.use(cors())
+app.use(bodyParser.json());
+app.use(cors());
 
 app.use(log.assignId);
 app.use(log.assignDate);
 app.use(morgan(log.syntax, { stream: log.log }));
 
-
-app.use("/api",route)
-
+app.use("/api", roleRoute);
+app.use("/api", userRoute);
 
 // connect
 app.listen(port, (err) => {
@@ -33,15 +32,7 @@ app.listen(port, (err) => {
 });
 dbConnection();
 
-// function test(a, b) {
-//     this.a = a;
-//     this.b = b;
-//     (this.print = () => {
-//         this.a = 3
-//         console.log(this)
-//     })
+// let obj = {}
+// console.log(obj)
+// console.log(Boolean(!obj))
 
-// }
-
-// const tester = new test(1,2)
-// tester.print()
