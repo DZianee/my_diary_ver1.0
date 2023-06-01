@@ -7,12 +7,10 @@ const diaryPostSchema = new mongoose.Schema(
     },
     description: {
       type: String,
-      required: [true, "Must have a content"],
     },
     image: { type: [Object] },
     emotion: {
       type: String,
-      required: [true, "Must leave the diary's emotion expression"],
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,

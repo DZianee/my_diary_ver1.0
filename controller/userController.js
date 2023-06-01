@@ -134,7 +134,7 @@ const userController = {
       account = await userModel.findOne({ _id: id });
       httpSuccess.successAll(res, account);
     } catch (error) {
-      if (!account) httpError.notFound(res, error, "role");
+      if (!account) httpError.notFound(res, error, "account");
       else httpError.serverError(res, error);
     }
   },

@@ -7,6 +7,7 @@ const dotenv = require("dotenv");
 const log = require("./middleware/logEvent");
 const roleRoute = require("./routes/roleRoute");
 const userRoute = require("./routes/userRoute");
+const diaryRoute = require("./routes/diaryRoute");
 const dbConnection = require("./config/dbConfig");
 
 // definite
@@ -17,13 +18,16 @@ const port = process.env.PORT || 1314;
 //usage
 app.use(bodyParser.json());
 app.use(cors());
+// app.use(express.static("../uploads"));
 
 app.use(log.assignId);
 app.use(log.assignDate);
 app.use(morgan(log.syntax, { stream: log.log }));
 
+
 app.use("/api", roleRoute);
 app.use("/api", userRoute);
+app.use("/api", diaryRoute);
 
 // connect
 app.listen(port, (err) => {
